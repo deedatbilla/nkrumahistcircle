@@ -57,10 +57,13 @@ auth=FirebaseAuth.getInstance();
             public boolean onMenuItemClick(MenuItem menuItem) {
 
                 switch (menuItem.getItemId()){
-                    case R.id.item1:
+                    case R.id.item3:
+
+
 
 
                         break;
+
 
                     case R.id.item2:
 

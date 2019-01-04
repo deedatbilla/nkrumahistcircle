@@ -1,63 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+tools:context=".finances.FinanceManagement">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="0dp"
+        app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
+        app:liftOnScroll="true"
+        app:theme="@style/toobar_theme"
+        app:titleTextColor="@color/white" />
+
+<com.google.android.material.tabs.TabLayout
+    android:id="@+id/tablayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".finances.FinanceManagement">
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    app:tabIndicatorColor="@color/colorAccent"
+    app:tabSelectedTextColor="@android:color/white"
+    app:tabTextColor="@android:color/white">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
-
-
-        <include layout="@layout/toolbar" />
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeContainer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="60dp"
-        app:layout_constraintVertical_bias="0.0">
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="@color/common_google_signin_btn_text_dark_default"
-            android:scrollbars="none"
-            app:layout_constraintBottom_toTopOf="@+id/navigation"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" >
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floating_action_button"
-        style="@style/Widget.Design.FloatingActionButton"
+    <com.google.android.material.tabs.TabItem
+        android:id="@+id/tabhome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_margin="16dp"
-        app:srcCompat="@drawable/ic_add_black_24dp"/>
+        android:text="Expense" />
+
+    <com.google.android.material.tabs.TabItem
+        android:id="@+id/tabchat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Income" />
 
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</com.google.android.material.tabs.TabLayout>
+
+<androidx.viewpager.widget.ViewPager
+    android:id="@+id/pager"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" >
+
+</androidx.viewpager.widget.ViewPager>
+
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
+    tools:openDrawer="start">
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer" />
+</androidx.drawerlayout.widget.DrawerLayout>
+
+</LinearLayout>

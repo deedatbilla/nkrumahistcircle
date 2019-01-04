@@ -121,7 +121,7 @@ opt();
             if (!TextUtils.isEmpty(description)&&!TextUtils.isEmpty(amount)) {
 
                 String id = myRef.push().getKey();
-                money exp = new money(R.drawable.ic_remove_circle, description, "02/01/19", Double.parseDouble(amount));
+                money exp = new money(R.drawable.ic_add_circle, description, "02/01/19", Double.parseDouble(amount));
                 myRef.child(id).setValue(exp);
                 Toast.makeText(this, "Income Successfully Added", Toast.LENGTH_SHORT).show();
                 desc.setText("");

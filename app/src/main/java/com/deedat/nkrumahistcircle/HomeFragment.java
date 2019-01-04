@@ -8,6 +8,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -32,11 +34,11 @@ public class HomeFragment extends Fragment  {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
 
-                  //  toolbar.setTitle("Home");
+                 //  toolbar.setTitle("Home");
                     return true;
                 case R.id.navigation_dashboard:
 
-                   // toolbar.setTitle("Dashboard");
+                 //  toolbar.setTitle("Dashboard");
                     return true;
                 case R.id.navigation_notifications:
 
@@ -45,7 +47,7 @@ public class HomeFragment extends Fragment  {
                 case R.id.navigation_finance:
 
                    // toolbar.setTitle("Finances");
-                    //nkfinances();
+                    nkfinances();
 
                     return true;
             }
@@ -78,11 +80,17 @@ public class HomeFragment extends Fragment  {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        toolbar=view.findViewById(R.id.toolbar);
 
         BottomNavigationView navigation = (BottomNavigationView) view.findViewById(R.id.navigation);
-       // navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-      //  toolbar=view.findViewById(R.id.toolbar);
+
+    }
+    public void nkfinances(){
+        Intent intent= new Intent(getActivity(),FinanceManagement.class);
+        startActivity(intent);
+        Log.i("hello","tt");
 
     }
 
