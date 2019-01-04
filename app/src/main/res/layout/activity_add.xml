@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".finances.AddActivity"
+    tools:layout_editor_absoluteY="25dp">
+
+  <com.google.android.material.appbar.AppBarLayout
+      android:id="@+id/appBarLayout"
+      android:layout_width="0dp"
+      android:layout_height="208dp"
+
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
+
+
+    <include layout="@layout/toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+      <com.google.android.material.textfield.TextInputLayout
+
+          android:layout_width="240dp"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="20dp"
+          android:textColorHint="@color/common_google_signin_btn_text_dark_default"
+          android:theme="@style/text_input"
+          app:boxBackgroundColor="@color/colorPrimary"
+          app:boxStrokeColor="@color/common_google_signin_btn_text_dark_default">
+
+        <com.google.android.material.textfield.TextInputEditText
+
+            android:id="@+id/desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/desc"
+            android:inputType="text|textCapSentences"
+            android:textColor="@color/common_google_signin_btn_text_dark_default" />
+      </com.google.android.material.textfield.TextInputLayout>
+
+
+      <com.google.android.material.textfield.TextInputLayout
+          android:layout_width="130dp"
+          android:layout_height="wrap_content"
+          android:layout_margin="20dp"
+
+          android:textColorHint="@color/common_google_signin_btn_text_dark_default"
+          android:theme="@style/text_input"
+
+          app:boxBackgroundColor="@color/colorPrimary"
+          app:boxStrokeColor="@color/common_google_signin_btn_text_dark_default">
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:hint="@string/amount"
+            android:inputType="text|textCapSentences"
+            android:textColor="@color/common_google_signin_btn_text_dark_default" />
+      </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+  </com.google.android.material.appbar.AppBarLayout>
+
+
+  <com.google.android.material.floatingactionbutton.FloatingActionButton
+      android:id="@+id/floating_action_button"
+      style="@style/Widget.Design.FloatingActionButton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+
+
+      android:layout_marginEnd="16dp"
+      app:layout_constraintBottom_toBottomOf="@+id/appBarLayout"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+      app:srcCompat="@drawable/ic_save" />
+
+  <Switch
+      android:id="@+id/switch1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="1dp"
+      app:layout_constraintStart_toStartOf="@+id/textView6"
+      app:layout_constraintTop_toBottomOf="@+id/textView6"
+      android:checked="false"
+      android:theme="@style/ExpenseSwitchTheme"/>
+
+  <TextView
+      android:id="@+id/textView6"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="28dp"
+      android:layout_marginTop="4dp"
+      android:text="Type"
+      android:textSize="15dp"
+      android:textStyle="bold"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+  <TextView
+      android:id="@+id/textView7"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="117dp"
+      android:layout_marginTop="24dp"
+      android:layout_marginEnd="116dp"
+      android:text="Date"
+      android:textStyle="bold"
+      app:layout_constraintEnd_toEndOf="@+id/appBarLayout"
+      app:layout_constraintHorizontal_bias="0.545"
+      app:layout_constraintStart_toEndOf="@+id/switch1"
+      app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+  <TextView
+      android:id="@+id/toggle_textview"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="8dp"
+      android:layout_marginBottom="1dp"
+      android:text="Expense"
+      android:textSize="15dp"
+      android:textStyle="bold"
+      app:layout_constraintBottom_toBottomOf="@+id/switch1"
+      app:layout_constraintStart_toEndOf="@+id/switch1" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

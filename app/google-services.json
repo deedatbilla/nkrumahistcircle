@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "505226311547",
+    "firebase_url": "https://nkrumahist-circle.firebaseio.com",
+    "project_id": "nkrumahist-circle",
+    "storage_bucket": "nkrumahist-circle.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:505226311547:android:4148f22df903711d",
+        "android_client_info": {
+          "package_name": "com.deedat.nkrumahistcircle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "505226311547-6pleiqeg56e3fuun4qfs9d1uhrkorpt4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmMoGUJcrBZEG_sY0CYkDzKZTJV8gS2jE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
