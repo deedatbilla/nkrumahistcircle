@@ -35,7 +35,7 @@ FirebaseAuth auth;
         TabItem tabItem1=findViewById(R.id.tabhome);
         TabItem tabItem2=findViewById(R.id.tabchat);
         TabItem tabItem3=findViewById(R.id.news);
-     // tabs.setupWithViewPager(pager);
+      tabs.setupWithViewPager(pager);
 
 
         pageAdapter MpageAdapter = new pageAdapter(getSupportFragmentManager(),3);
@@ -43,6 +43,7 @@ FirebaseAuth auth;
 
         pager.setAdapter(MpageAdapter);
         pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabs));
+
 
 auth=FirebaseAuth.getInstance();
 

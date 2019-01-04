@@ -106,6 +106,7 @@ opt();
                 Toast.makeText(this, "Expense Successfully Added", Toast.LENGTH_SHORT).show();
                 desc.setText("");
                 amt.setText("");
+                finish();
 
             } else {
                 Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
@@ -126,6 +127,7 @@ opt();
                 Toast.makeText(this, "Income Successfully Added", Toast.LENGTH_SHORT).show();
                 desc.setText("");
                 amt.setText("");
+                finish();
 
             } else {
                 Toast.makeText(this, "there was a problem", Toast.LENGTH_SHORT).show();

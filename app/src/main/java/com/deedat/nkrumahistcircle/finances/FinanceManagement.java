@@ -57,7 +57,7 @@ public class FinanceManagement extends AppCompatActivity {
         TabItem tabItem1=findViewById(R.id.tabhome);
         TabItem tabItem2=findViewById(R.id.tabchat);
 
-        // tabs.setupWithViewPager(pager);
+        tabs.setupWithViewPager(pager);
 
 
         FinancePageAdapter MpageAdapter = new FinancePageAdapter(getSupportFragmentManager(),2);
