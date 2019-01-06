@@ -37,11 +37,16 @@ public class IncomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        SwipeRefreshLayout swipeContainer;
+        final SwipeRefreshLayout swipeContainer;
         swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+
+              ///  FinanceManagement recycle_refresh=new FinanceManagement();
+               // recycle_refresh.madapter.notifyDataSetChanged();
+                swipeContainer.setRefreshing(false);
+
                 // Your code to refresh the list here.
                 // Make sure you call swipeContainer.setRefreshing(false)
                 // once the network request has completed successfully.

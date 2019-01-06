@@ -1,12 +1,16 @@
 package com.deedat.nkrumahistcircle.finances;
 
+import android.app.DatePickerDialog;
 import android.net.Network;
 import android.os.Bundle;
 import android.app.Activity;
 import android.text.TextUtils;
+import android.text.format.DateFormat;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.sql.Connection;
+import java.util.Calendar;
 
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
@@ -25,7 +30,14 @@ public class AddActivity extends Activity {
 TextView desc,amt,toggle_textview;
 String toggle_value="expense";
 Switch toggle;
-
+    TextView  date;
+    Button dateButton;
+    TextView expennsedate;
+    DatePickerDialog datePickerDialog;
+    int year;
+    int month;
+    int dayOfMonth;
+    Calendar calendar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +67,53 @@ opt();
             }
         });
 
+        dateButton = findViewById(R.id.buttonDate);
 
 
-      //  myRef.setValue("Hello, World!");
+       // date = findViewById(R.id.date);
+
+
+        dateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                calendar = Calendar.getInstance();
+                year = calendar.get(Calendar.YEAR);
+                month = calendar.get(Calendar.MONTH);
+                dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+                datePickerDialog = new DatePickerDialog(AddActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                                dateButton.setText(day + "/" + (month + 1) + "/" + year);
+                            }
+                        }, year, month, dayOfMonth);
+                datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
+                datePickerDialog.show();
+
+            }
+        });
+
+
+        //  myRef.setValue("Hello, World!");
 
     }
 
+    @Override
+    public void onStart(){
+        super.onStart();
+        calendar = Calendar.getInstance();
+        year = calendar.get(Calendar.YEAR);
+        month = calendar.get(Calendar.MONTH);
+        dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+        datePickerDialog = new DatePickerDialog(AddActivity.this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                        dateButton.setText(day + "/" + (month + 1) + "/" + year);
+                    }
+                }, year, month, dayOfMonth);
+
+    }
     public void backicon(){
 
         finish();
@@ -97,11 +150,11 @@ opt();
             DatabaseReference myRef = database.getReference("expenses");
             String description = desc.getText().toString().trim();
              String amount=amt.getText().toString();
-
+            String  datestring = dateButton.getText().toString();
             if (!TextUtils.isEmpty(description)&&!TextUtils.isEmpty(amount)) {
 
                 String id = myRef.push().getKey();
-                money exp = new money(R.drawable.ic_remove_circle, description, "02/01/19", Double.parseDouble(amount));
+                money exp = new money(R.drawable.ic_remove_circle, description, datestring, Double.parseDouble(amount));
                 myRef.child(id).setValue(exp);
                 Toast.makeText(this, "Expense Successfully Added", Toast.LENGTH_SHORT).show();
                 desc.setText("");
@@ -109,7 +162,8 @@ opt();
                 finish();
 
             } else {
-                Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
+                amt.setError("Enter Amount");
             }
         }
 
@@ -118,11 +172,13 @@ opt();
             DatabaseReference myRef = database.getReference("incomes");
             String description = desc.getText().toString().trim();
             String amount=amt.getText().toString();
+            String datestring = dateButton.getText().toString();;
+
 
             if (!TextUtils.isEmpty(description)&&!TextUtils.isEmpty(amount)) {
 
                 String id = myRef.push().getKey();
-                money exp = new money(R.drawable.ic_add_circle, description, "02/01/19", Double.parseDouble(amount));
+                money exp = new money(R.drawable.ic_add_circle, description, datestring, Double.parseDouble(amount));
                 myRef.child(id).setValue(exp);
                 Toast.makeText(this, "Income Successfully Added", Toast.LENGTH_SHORT).show();
                 desc.setText("");
@@ -130,7 +186,8 @@ opt();
                 finish();
 
             } else {
-                Toast.makeText(this, "there was a problem", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "there was a problem", Toast.LENGTH_SHORT).show();
+                desc.setError("Enter description");
             }
         }
 

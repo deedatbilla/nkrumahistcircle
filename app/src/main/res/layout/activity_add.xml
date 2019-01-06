@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
 
             android:hint="@string/amount"
-            android:inputType="text|textCapSentences"
+            android:inputType="number|numberDecimal"
             android:textColor="@color/common_google_signin_btn_text_dark_default" />
       </com.google.android.material.textfield.TextInputLayout>
 
@@ -90,10 +90,10 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="1dp"
-      app:layout_constraintStart_toStartOf="@+id/textView6"
-      app:layout_constraintTop_toBottomOf="@+id/textView6"
       android:checked="false"
-      android:theme="@style/ExpenseSwitchTheme"/>
+      android:theme="@style/ExpenseSwitchTheme"
+      app:layout_constraintStart_toStartOf="@+id/textView6"
+      app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
   <TextView
       android:id="@+id/textView6"
@@ -132,5 +132,15 @@
       android:textStyle="bold"
       app:layout_constraintBottom_toBottomOf="@+id/switch1"
       app:layout_constraintStart_toEndOf="@+id/switch1" />
+
+  <Button
+      android:id="@+id/buttonDate"
+      style="@style/Widget.AppCompat.Button.Borderless"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="8dp"
+      app:cornerRadius="6dp"
+      app:layout_constraintStart_toStartOf="@+id/textView7"
+      app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

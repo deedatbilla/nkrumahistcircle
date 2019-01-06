@@ -20,7 +20,8 @@
 
         android:id="@+id/navigation_finance"
         android:icon="@drawable/ic_account_balance_wallet"
-        android:title="@string/title_finance" />
+        android:title="@string/title_finance"
+        />
 
 
 

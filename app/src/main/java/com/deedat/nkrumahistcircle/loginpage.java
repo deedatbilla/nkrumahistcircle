@@ -56,7 +56,8 @@ android.widget.ProgressBar ProgressBar;
                 final String password = inputPassword.getText().toString();
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    inputEmail.setError("Enter your email");
+                   //Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -108,3 +109,6 @@ android.widget.ProgressBar ProgressBar;
         startActivity(intent);
     }
 }
+
+
+///google api key => AIzaSyB4W--rW_S4u9Jn6iSkU1LkqZVQhoKtIbQ

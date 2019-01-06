@@ -35,7 +35,7 @@ import java.util.ArrayList;
 public class FinanceManagement extends AppCompatActivity {
     private RecyclerView mrecyclerview;
     private RecyclerView mrecyclerview2;
-    private RecyclerView.Adapter madapter;
+    public RecyclerView.Adapter madapter;
     private RecyclerView.Adapter madapter2;
     private RecyclerView.LayoutManager mlayoutmanager;
     private RecyclerView.LayoutManager mlayoutmanager2;
