@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
 
     android:background="@color/colorPrimaryDark"
-    tools:context=".loginpage"
+    tools:context=".activity.loginpage"
     tools:layout_editor_absoluteY="25dp">
 
 

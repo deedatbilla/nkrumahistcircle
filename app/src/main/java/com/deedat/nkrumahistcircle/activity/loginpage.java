@@ -1,8 +1,7 @@
-package com.deedat.nkrumahistcircle;
+package com.deedat.nkrumahistcircle.activity;
 
 import android.content.Intent;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -15,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.deedat.nkrumahistcircle.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -85,9 +85,8 @@ android.widget.ProgressBar ProgressBar;
                                         Toast.makeText(loginpage.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    Intent intent = new Intent(loginpage.this, MainActivity.class);
-                                    startActivity(intent);
 
+onAuthSuccess();
                                     finish();
                                 }
                             }
@@ -98,6 +97,15 @@ android.widget.ProgressBar ProgressBar;
             }
         });
     }
+
+    private void onAuthSuccess() {
+
+        Intent intent = new Intent(loginpage.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+
 
     public void registerpage(View view){
         Intent intent=new Intent(this,signup.class);

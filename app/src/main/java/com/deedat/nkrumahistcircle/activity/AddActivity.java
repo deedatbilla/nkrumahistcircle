@@ -1,12 +1,9 @@
-package com.deedat.nkrumahistcircle.finances;
+package com.deedat.nkrumahistcircle.activity;
 
 import android.app.DatePickerDialog;
-import android.net.Network;
 import android.os.Bundle;
 import android.app.Activity;
 import android.text.TextUtils;
-import android.text.format.DateFormat;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -16,14 +13,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.deedat.nkrumahistcircle.R;
+import com.deedat.nkrumahistcircle.model.money;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.sql.Connection;
 import java.util.Calendar;
 
-import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 
 public class AddActivity extends Activity {
@@ -38,7 +34,8 @@ Switch toggle;
     int month;
     int dayOfMonth;
     Calendar calendar;
-
+    private static final int income = 1;
+    private static final int expense = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +50,7 @@ Switch toggle;
                 backicon();
             }
         });
-        toolbar.setElevation(10f);
+       // toolbar.setElevation(10f);
         //toolbar.inflateMenu(R.menu.menu);
         FloatingActionButton fab=findViewById(R.id.floating_action_button);
         desc=findViewById(R.id.desc);
@@ -69,6 +66,7 @@ opt();
 
         dateButton = findViewById(R.id.buttonDate);
 
+        dateButton.setText("Date");
 
        // date = findViewById(R.id.date);
 
@@ -98,22 +96,7 @@ opt();
 
     }
 
-    @Override
-    public void onStart(){
-        super.onStart();
-        calendar = Calendar.getInstance();
-        year = calendar.get(Calendar.YEAR);
-        month = calendar.get(Calendar.MONTH);
-        dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
-        datePickerDialog = new DatePickerDialog(AddActivity.this,
-                new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                        dateButton.setText(day + "/" + (month + 1) + "/" + year);
-                    }
-                }, year, month, dayOfMonth);
 
-    }
     public void backicon(){
 
         finish();
@@ -147,14 +130,14 @@ opt();
         String expected_value = opt();
         if (expected_value == "expense") {
             FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference myRef = database.getReference("expenses");
+            DatabaseReference myRef = database.getReference("finances");
             String description = desc.getText().toString().trim();
              String amount=amt.getText().toString();
             String  datestring = dateButton.getText().toString();
             if (!TextUtils.isEmpty(description)&&!TextUtils.isEmpty(amount)) {
 
                 String id = myRef.push().getKey();
-                money exp = new money(R.drawable.ic_remove_circle, description, datestring, Double.parseDouble(amount));
+                money exp = new money(R.drawable.ic_remove_circle, description, datestring, Double.parseDouble(amount),"expense");
                 myRef.child(id).setValue(exp);
                 Toast.makeText(this, "Expense Successfully Added", Toast.LENGTH_SHORT).show();
                 desc.setText("");
@@ -169,7 +152,7 @@ opt();
 
         else if(expected_value=="income"){
             FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference myRef = database.getReference("incomes");
+            DatabaseReference myRef = database.getReference("finances");
             String description = desc.getText().toString().trim();
             String amount=amt.getText().toString();
             String datestring = dateButton.getText().toString();;
@@ -178,7 +161,7 @@ opt();
             if (!TextUtils.isEmpty(description)&&!TextUtils.isEmpty(amount)) {
 
                 String id = myRef.push().getKey();
-                money exp = new money(R.drawable.ic_add_circle, description, datestring, Double.parseDouble(amount));
+                money exp = new money(R.drawable.ic_add_circle, description, datestring, Double.parseDouble(amount),"income");
                 myRef.child(id).setValue(exp);
                 Toast.makeText(this, "Income Successfully Added", Toast.LENGTH_SHORT).show();
                 desc.setText("");

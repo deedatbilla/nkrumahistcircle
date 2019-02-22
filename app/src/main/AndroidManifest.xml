@@ -3,36 +3,59 @@
     package="com.deedat.nkrumahistcircle">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_nk_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_nk_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".loginpage">
+        <service android:name=".service.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".activity.loginpage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".signup" />
+        <activity android:name=".activity.signup" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".PasswordReset" />
+        <activity android:name=".activity.PasswordReset" />
         <activity android:name=".finances.FinanceManagement" />
         <activity
-            android:name=".MainActivity"
-
+            android:name=".activity.MainActivity"
             android:label="@string/title_activity_main" />
         <activity
-            android:name=".finances.AddActivity"
-            android:label="@string/title_activity_add"></activity>
+            android:name=".activity.AddActivity"
+            android:label="@string/title_activity_add" />
+        <activity android:name=".activity.ChatActivity" />
+        <activity android:name=".activity.AddArticle" />
+        <activity
+            android:name=".activity.Article_content"
+            android:label="@string/title_activity_article_content" />
+        <activity android:name=".activity.ActivityAddDoc" />
+
+        <service
+            android:name=".service.MyDownloadService"
+            android:exported="false" />
+        <service
+            android:name=".service.MyUploadService"
+            android:exported="false" />
+
+        <activity
+            android:name=".activity.Settings"
+            android:label="@string/title_activity_settings"></activity>
     </application>
 
 </manifest>

@@ -1,78 +1,39 @@
-
-
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
-
-
+    tools:context=".activity.MainActivity">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:liftOnScroll="true"
 
         app:theme="@style/toobar_theme"
-        app:titleTextColor="@color/white"
-        android:layout_height="?attr/actionBarSize"
-        app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
-        app:liftOnScroll="true"
-        android:background="@color/colorPrimary"
-        />
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tablayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        app:tabIndicatorColor="@color/colorAccent"
-        app:tabSelectedTextColor="@android:color/white"
-        app:tabTextColor="@android:color/white">
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabhome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/title_home"
-            />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabchat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Chats" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/news"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="News" />
-
-    </com.google.android.material.tabs.TabLayout>
-
-    <androidx.viewpager.widget.ViewPager
-            android:id="@+id/pager"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
-
-    </androidx.viewpager.widget.ViewPager>
-
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:id="@+id/drawer_layout"
+        app:titleTextColor="@color/white" />
+    <FrameLayout
+        android:id="@+id/frame_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="false"
-        tools:openDrawer="start">
 
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            app:headerLayout="@layout/nav_header_main"
-            app:menu="@menu/activity_main_drawer" />
-    </androidx.drawerlayout.widget.DrawerLayout>
 
-</LinearLayout>
+         />
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation"
+app:labelVisibilityMode="labeled"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="?android:attr/windowBackground"
+        android:foreground="?attr/selectableItemBackground"
+       style="@style/Widget.MaterialComponents.BottomNavigationView"
+        app:menu="@menu/navigation"  />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

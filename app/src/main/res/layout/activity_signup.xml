@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
 
     android:background="@color/colorPrimaryDark"
-    tools:context=".signup"
+    tools:context=".activity.signup"
     tools:layout_editor_absoluteY="25dp">
 
 
@@ -47,6 +47,9 @@
             android:layout_height="match_parent"
             android:textColorHint="@color/black"
             />
+
+
+
 
 
     </com.google.android.material.textfield.TextInputLayout>

@@ -2,10 +2,13 @@
 <resources>
     <color name="colorPrimaryDark">#2e7d32</color>
     <color name="colorPrimary">#388e3c</color>
-    <color name="colorAccent">#ffeb3b</color>
+    <color name="colorAccent">#FFD600</color>
 
 <color name="black">#000000</color>
 
+    <color name="bg_row_background">#fa315b</color>
+    <color name="item_name">#535353</color>
+    <color name="description">#a9a9a9</color>
 
     <color name="bg_login">#26ae90</color>
     <color name="bg_register">#2e3237</color>
@@ -25,4 +28,7 @@
     <color name="budget_orange">#FF9800</color>
     <color name="budget_red">#f44336</color>
     <color name="budget_red_out">#f17970</color>
+    <color name="list_divider">#dedede</color>
+    <color name="chat_tile">#f5f5f5</color>
+    <color name="bg_bubble_self">#E1E1E1</color>
 </resources>

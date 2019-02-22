@@ -7,14 +7,14 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_person_black_24dp"
-        android:title="Profile" />
+        android:id="@+id/navigation_documents"
+        android:icon="@drawable/ic_documents"
+        android:title="Documents" />
 
-    <item
+   <item
         android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" />
+        android:icon="@drawable/ic_message_black"
+        android:title="@string/chat" />
 
     <item
 
@@ -23,6 +23,10 @@
         android:title="@string/title_finance"
         />
 
-
+    <item
+        android:id="@+id/navigation_news-feed"
+        android:icon="@drawable/ic_whatshot_black_24dp"
+        android:title="@string/news"
+        />
 
 </menu>

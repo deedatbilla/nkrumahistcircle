@@ -1,7 +1,9 @@
-package com.deedat.nkrumahistcircle;
+package com.deedat.nkrumahistcircle.adapter;
 
 
-import androidx.annotation.NonNull;
+import com.deedat.nkrumahistcircle.HomeFragment;
+import com.deedat.nkrumahistcircle.NewFragment;
+
 import androidx.fragment.app.Fragment;
 
 import androidx.fragment.app.FragmentManager;
@@ -23,7 +25,7 @@ public class pageAdapter extends FragmentPagerAdapter {
             case 0:
               return   new HomeFragment();
             case 1:
-                 return new ChatFragment();
+             //    return new ChatActivity();
             case 2:
                   return new NewFragment();
             default:

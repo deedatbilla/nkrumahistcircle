@@ -1,4 +1,4 @@
-package com.deedat.nkrumahistcircle.finances;
+package com.deedat.nkrumahistcircle.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.deedat.nkrumahistcircle.R;
+import com.deedat.nkrumahistcircle.model.money;
 
 import java.util.ArrayList;
 
@@ -32,16 +33,16 @@ public class itemsAdapter extends RecyclerView.Adapter<itemsAdapter.itemViewHold
 
     }
 
-    public itemsAdapter(ArrayList<money> finacelist){
 
-        mfinancelist=finacelist;
-    }
     @Override
     public int getItemCount() {
         return mfinancelist.size();
     }
 
     private  ArrayList<money> mfinancelist;
+    public itemsAdapter(ArrayList<money> financelist){
+        mfinancelist=financelist;
+    }
     public  static class itemViewHolder extends RecyclerView.ViewHolder{
 public ImageView mimageView;
 public TextView mtype,mdate,mamount;

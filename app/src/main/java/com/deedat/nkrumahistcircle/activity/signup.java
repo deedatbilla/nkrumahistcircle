@@ -1,4 +1,4 @@
-package com.deedat.nkrumahistcircle;
+package com.deedat.nkrumahistcircle.activity;
 
 import android.content.Intent;
 import androidx.annotation.NonNull;
@@ -13,10 +13,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.deedat.nkrumahistcircle.R;
+import com.deedat.nkrumahistcircle.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class signup extends AppCompatActivity {
@@ -91,9 +96,7 @@ TextView login;
                                     Toast.makeText(signup.this, "Authentication failed." + task.getException(),
                                             Toast.LENGTH_SHORT).show();
                                 } else {
-                                    startActivity(new Intent(signup.this, MainActivity.class));
-
-                                    finish();
+                                    onAuthSuccess(task.getResult().getUser());
 
                                 }
                             }
@@ -111,6 +114,32 @@ TextView login;
         ProgressBar.setVisibility(View.GONE);
     }
 
+    private void onAuthSuccess(FirebaseUser user) {
+        String username = usernameFromEmail(user.getEmail());
+
+        // Write new user
+        writeNewUser(user.getUid(), username, user.getEmail());
+
+        // Go to MainActivity
+        Intent intent = new Intent(signup.this, MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void writeNewUser(String userId, String name, String email) {
+        User user = new User(name, email);
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference();
+        myRef.child("users").child(userId).setValue(user);
+    }
+
+    private String usernameFromEmail(String email) {
+        if (email.contains("@")) {
+            return email.split("@")[0];
+        } else {
+            return email;
+        }
+    }
 
     public void login_page(View view){
        finish();
